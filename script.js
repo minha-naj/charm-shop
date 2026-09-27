@@ -1,101 +1,94 @@
 const products = {
-
     cat: {
         name: "Cat Charm",
         price: "₹150",
         image: "🐱",
-        description: "A cute little cat charm for your bag, keys or pencil case!"
+        description: "A tiny cat charm made to add a little personality to your favourite bag or keys."
     },
-
     bunny: {
         name: "Bunny Charm",
         price: "₹180",
         image: "🐰",
-        description: "A sweet bunny charm to add some cuteness to your everyday things!"
+        description: "A sweet bunny charm for anyone who loves cute little accessories."
     },
-
     flower: {
         name: "Flower Charm",
         price: "₹120",
         image: "🌸",
-        description: "A pretty little flower charm with a soft and cute look!"
+        description: "A pretty flower charm with a soft, cheerful look."
     },
-
     strawberry: {
         name: "Strawberry Charm",
         price: "₹160",
         image: "🍓",
-        description: "A tiny strawberry charm that's perfect for your bag or keys!"
+        description: "A tiny strawberry charm that adds a fun pop of colour."
     },
-
     teddy: {
         name: "Teddy Charm",
         price: "₹200",
         image: "🧸",
-        description: "A tiny teddy charm for anyone who loves cute things!"
+        description: "A tiny teddy charm that makes any bag a little cuter."
     },
-
     bear: {
         name: "Bear Charm",
         price: "₹170",
         image: "🐻",
-        description: "A cute bear charm to make your accessories extra adorable!"
+        description: "A cute bear charm for your everyday accessories."
     },
-
     mushroom: {
         name: "Mushroom Charm",
         price: "₹140",
         image: "🍄",
-        description: "A cute little mushroom charm with a magical vibe!"
+        description: "A little mushroom charm with a playful, magical feel."
     },
-
     butterfly: {
         name: "Butterfly Charm",
         price: "₹190",
         image: "🦋",
-        description: "A beautiful butterfly charm for your favourite accessory!"
+        description: "A delicate butterfly charm for bags, keys and more."
     },
-
     moon: {
         name: "Moon Charm",
         price: "₹130",
         image: "🌙",
-        description: "A dreamy little moon charm for your bag or keys!"
+        description: "A dreamy moon charm for a subtle celestial touch."
     },
-
     star: {
         name: "Star Charm",
         price: "₹110",
         image: "⭐",
-        description: "A tiny star charm to add a little sparkle!"
+        description: "A tiny star charm to add a little sparkle to your things."
     }
-
 };
 
+const params = new URLSearchParams(window.location.search);
+const item = params.get("item");
+const product = products[item] || products.cat;
 
-/* Get the product name from the URL */
+document.title = product.name + " | Cutie Charms";
 
-const url = new URLSearchParams(window.location.search);
+document.getElementById("product-name").textContent = product.name;
+document.getElementById("product-price").textContent = product.price;
+document.getElementById("product-description").textContent = product.description;
 
-const item = url.get("item");
+function putProductImage(id) {
+    const box = document.getElementById(id);
 
+    /*
+       For now this uses the product emoji so you can see the layout.
+       When you have a real product photo, replace the emoji with:
+       <img src="images/cat.jpg">
+    */
+    const visual = document.createElement("div");
+    visual.className = "product-emoji";
+    visual.textContent = product.image;
 
-/* Find that product */
-
-const product = products[item];
-
-
-/* Display the product */
-
-if (product) {
-
-    document.getElementById("product-image").textContent = product.image;
-
-    document.getElementById("product-name").textContent = product.name;
-
-    document.getElementById("product-price").textContent = product.price;
-
-    document.getElementById("product-description").textContent =
-        product.description;
-
+    box.appendChild(visual);
 }
+
+putProductImage("photo-one");
+putProductImage("photo-two");
+
+document.getElementById("buy-button").addEventListener("click", function () {
+    alert("You selected " + product.name + "!");
+});
