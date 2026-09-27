@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Product</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | Cutie Charms</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="product-page">
 
-<body>
+    <main class="poster">
 
-    <div class="product-page">
+        <!-- These two image boxes sit exactly over the two yellow squares
+             in the uploaded floral background. -->
+        <div class="product-photo photo-one" id="photo-one"></div>
+        <div class="product-photo photo-two" id="photo-two"></div>
 
-        <div id="product-image" class="big-image"></div>
+        <section class="product-info">
+            <p class="small-title">CUTIE CHARMS</p>
+            <h1 id="product-name">Product</h1>
+            <p id="product-description"></p>
+            <p class="price" id="product-price"></p>
 
-        <h1 id="product-name"></h1>
+            <button id="buy-button">BUY NOW</button>
+            <a href="index.html">← BACK TO SHOP</a>
+        </section>
 
-        <h2 id="product-price"></h2>
-
-        <p id="product-description"></p>
-
-        <button class="buy-button">Buy Now</button>
-
-        <br><br>
-
-        <a href="index.html">← Back to Shop</a>
-
-    </div>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
